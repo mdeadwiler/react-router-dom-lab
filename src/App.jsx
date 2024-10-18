@@ -1,30 +1,25 @@
-// src/App.jsx
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import MailboxList from './components/MailboxList.jsx';
-import MailboxDetails from './components/MailboxDetails.jsx';
-import NavBar from "./components/NavBar";
+import NavBar from './components/NavBar';
+import MailboxForm from './components/MailboxForm';
+import MailboxList from './components/MailboxList';
+import MailboxDetails from './components/MailboxDetails';
 
 const App = () => {
   const [mailboxes, setMailboxes] = useState([]);
-  
-  const mailbox = {
-    _id: 1,
-    boxSize: 'Small',
-    boxholder: 'Alex',
-  };
-  
-  const addMailbox = (newMailboxData) => {
+
+  const addBox = (newMailboxData) => {
     newMailboxData._id = mailboxes.length + 1;
-    setMailboxes([...mailboxes, newMailboxData]); // Corrected this line
+    setMailboxes([...mailboxes, newMailboxData]);
   };
 
-  return ( // Added return statement
+  return (
     <>
       <NavBar />
       <Routes>
         <Route path="/" element={<main><h1>Post Office</h1></main>} />
-        <Route path="/mailboxes" element={<MailboxList mailboxes={mailbox} />} />
+        <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} />} />
+        <Route path="/new-mailbox" element={<MailboxForm addBox={addBox} />} />
         <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes} />} />
       </Routes>
     </>

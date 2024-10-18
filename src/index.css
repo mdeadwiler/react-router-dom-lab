@@ -90,10 +90,18 @@ li {
   margin-right: 16px;
 }
 
-.mail-box {
-  border: 2px solid white;
-  padding: 20px;
-}
+
+  .mail-box {
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+
 
 form {
   display: flex;

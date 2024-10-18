@@ -1,23 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
+const MailboxList = ({ mailboxes }) => {
+  return (
+    <div>
+      {mailboxes.map(mailbox => (
+        <div key={mailbox._id} className="mail-box">
+          <Link to={`/mailboxes/${mailbox._id}`}>
+            <h2>Mailbox {mailbox._id}</h2>
+            <p>Boxholder: {mailbox.boxholder}</p>
+          </Link>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-
-const MailboxList = (props) => {
-    return (
-      <>
-        <h2>Mailboxes</h2>
-        <ul>
-          {props.mailboxes.map((currentMailbox) => (
-           <li key={currentMailbox.name}>
-           <Link to={`/mailboxes/${currentMailbox._id}`}>
-             {currentMailbox.name}
-           </Link>
-         </li>
-          ))}
-        </ul>
-      </>
-    );
-  };
-  
-  export default MailboxList;
-  
+export default MailboxList;
